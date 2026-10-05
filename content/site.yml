@@ -1,0 +1,45 @@
+# Site-wide settings for honortheskeptic.stlctrufant.com
+# Edit these, then rebuild (python3 tools/build.py).
+
+site_title: "Honor the Skeptic"
+class_name: "Doubters Welcome"
+tagline: "A four-week Bible class on respectful conversation with people who doubt"
+url: "https://honortheskeptic.stlctrufant.com"
+
+church:
+  name: "St. Thomas Lutheran Church"
+  town: "Trufant, Michigan"
+  address: "408 W 2nd Street, Trufant, MI 49347"
+  website: "https://stlctrufant.com"
+  email: "STLCTrufant@gmail.com"
+  phone: "616-984-2811"
+
+teacher: "Pastor Aaron Frey"
+
+# When the class meets (shown on the home page and handouts)
+meetings:
+  - "Wednesdays at 7:00 PM"
+  - "Repeated Thursdays at 11:00 AM"
+
+# Bible version used for "Read" links (BibleGateway version code)
+bible_version: "ESV"
+
+# Epigraph on the home page
+epigraph:
+  text: "Honor everyone."
+  ref: "1 Peter 2:17"
+
+# Shown on the home page under "About the class"
+about: |
+  Most of us know someone who isn't sure about Christianity but is willing to talk about it.
+  A friend, a coworker, a grandchild. This class asks what Scripture says about how we talk
+  with them: why they deserve our honor, how we listen, how we meet their doubts, and how we
+  give the reason for the hope that is in us "with gentleness and respect" (1 Peter 3:15–16).
+
+  Each week pairs Bible study with short clips from real conversations between believers and
+  skeptics on YouTube, so we can see what respect looks like (and what it doesn't).
+
+  Everyone is welcome, including doubters. Lessons are posted here each Wednesday before class.
+
+# Show not-yet-published weeks on the home page as "Coming ..." cards
+show_upcoming: true

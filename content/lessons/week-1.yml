@@ -1,0 +1,111 @@
+# Week 1 lesson. See README.md for every field and section type.
+week: 1
+title: "Who They Are"
+subtitle: "Made in God's image, loved by the Father, gifted before they believe"
+date:            # Wednesday class date, e.g. 2026-10-14
+status: draft    # planned | draft | published
+summary: "Before a skeptic believes anything, God has already given them dignity, love, and gifts."
+big_idea: "We honor skeptics because God already does: he made them in his image, he loves them, and he has gifted them, all before they believe a word we say."
+handout_notes_lines: 3
+
+sections:
+  - type: question
+    kicker: "Opening"
+    heading: "Someone you know"
+    text: "Think of someone you know who doubts or rejects the Christian faith. What is one thing about them you admire?"
+    note_lines: 2
+
+  - type: clip
+    kicker: "Before we begin"
+    heading: "This isn't a game"
+    title: "Why Mary's Assumption Is Indefensible (opening remarks)"
+    channel: "Gavin Ortlund"
+    speaker: "Gavin Ortlund"
+    year: 2023
+    youtube: skuBFLns8WA
+    start: "1:54"
+    end: "3:04"
+    setup: |
+      Gavin Ortlund is a Protestant pastor and scholar. Before he critiques a belief that others
+      hold dear, he stops to talk about what it feels like to be on the receiving end, and he
+      shares a quote from Francis Schaeffer on how apologetics can go wrong.
+    listen_for:
+      - "Why he says defending the faith is not a game or just an intellectual exercise"
+      - "What he says you owe a person after you've knocked them over"
+    ties_to: ["James 3:1", "James 3:9-10", "2 Timothy 2:24-25"]
+
+  - type: scripture
+    kicker: "Who they are · 1"
+    heading: "Made in God's image"
+    passages:
+      - ref: "Genesis 1:26–27"
+        note: "Every human being, male and female, is made in the image of God."
+      - ref: "Genesis 9:6"
+        note: "After the fall and the flood, the image remains. That is why a human life is sacred."
+      - ref: "Psalm 8"
+        note: "God has crowned human beings with glory and honor."
+      - ref: "James 3:9–10"
+        note: "With the same tongue we bless God and curse people made in his likeness."
+
+  - type: scripture
+    kicker: "Who they are · 2"
+    heading: "Loved by the Father"
+    passages:
+      - ref: "Matthew 5:44–45"
+        note: "Love your enemies. The Father sends sun and rain on the just and the unjust."
+      - ref: "John 3:16"
+        note: "God so loved the world."
+      - ref: "1 Timothy 2:4"
+        note: "God desires all people to be saved and to come to the knowledge of the truth."
+      - ref: "Ezekiel 33:11"
+        note: "God takes no pleasure in the death of the wicked."
+      - ref: "Jonah 4:10–11"
+        note: "God's compassion for Nineveh, the city Jonah wanted destroyed."
+
+  - type: scripture
+    kicker: "Who they are · 3"
+    heading: "Gifted before they believe"
+    passages:
+      - ref: "Genesis 4:20–22"
+        note: "From Cain's line come herding, music, and metalwork."
+      - ref: "Exodus 18"
+        note: "Jethro, a Midianite priest, gives Moses the wise counsel he needed."
+      - ref: "1 Kings 5; 7:13–14"
+        note: "Hiram of Tyre and his craftsmen help build God's temple."
+      - ref: "Isaiah 45:1"
+        note: "God calls Cyrus, a pagan king, his anointed."
+
+  - type: questions
+    heading: "Talk it over"
+    items:
+      - "Which of these three (image, love, gifts) is easiest for you to forget when you're talking with a skeptic?"
+      - "Jethro and Hiram weren't Israelites, yet God used their wisdom and skill. What gifts have you seen in non-believers you know?"
+      - "James says we bless God and curse people made in his likeness *with the same tongue*. Where do Christians slip into that online or in person?"
+
+  - type: scripture
+    kicker: "Then comes the command"
+    heading: "Honor everyone"
+    body: |
+      The command to honor comes *after* who they are. We don't respect people to win them. We
+      respect them because of what God has already done for them.
+    passages:
+      - ref: "1 Peter 2:17"
+        note: "Honor everyone."
+      - ref: "1 Peter 3:15–16"
+        note: "Always be ready to give a reason for your hope, with gentleness and respect."
+      - ref: "2 Timothy 2:24–26"
+        note: "The Lord's servant must be kind to everyone and correct opponents with gentleness."
+
+  - type: text
+    heading: "One guardrail"
+    body: |
+      Honoring someone as God's image-bearer doesn't soften the claim that they need Christ.
+      We tell them about Christ *because* they are worth that much to God.
+
+  - type: activity
+    kicker: "This week"
+    heading: "Practice"
+    steps:
+      - "Pray by name for the person you thought of at the start of class."
+      - "Thank God for one specific gift you see in them."
+      - "If it fits naturally, tell them something you appreciate about them. No agenda."

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ site.site_title }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.tagline }}{% endblock %}">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}{% block canonical %}/{% endblock %}">
+<meta property="og:image" content="{{ site.url }}/assets/img/og.png">
+<link rel="icon" href="{{ root }}assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="{{ root }}assets/fonts/Lora.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="{{ root }}assets/style.css?v={{ build_id }}">
+<script>try{var t=localStorage.getItem('hts-theme');if(t)document.documentElement.dataset.theme=t;var s=localStorage.getItem('hts-size');if(s)document.documentElement.dataset.size=s;}catch(e){}</script>
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+{% if preview %}<div class="preview-banner">Draft preview: not the live site. Drafts appear here but are never published until marked <code>published</code>.</div>{% endif %}
+<header class="topbar">
+  <a class="brand" href="{{ root }}">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3v26M7 11h18" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/></svg>
+    <span>{{ site.site_title }}</span>
+  </a>
+  <nav class="topnav" aria-label="Lessons">
+    {% for l in nav_lessons %}
+      {% if l.live %}<a href="{{ root }}{{ l.slug }}/"{% if lesson and lesson.slug == l.slug %} aria-current="page"{% endif %}>Week {{ l.week }}</a>
+      {% else %}<span class="nav-soon" title="Coming {{ l.date_label or 'soon' }}">Week {{ l.week }}</span>{% endif %}
+    {% endfor %}
+  </nav>
+  <div class="tools">
+    <button class="tool" data-action="size" title="Text size (+/-)" aria-label="Change text size"><span aria-hidden="true">A<small>A</small></span></button>
+    <button class="tool" data-action="theme" title="Light / dark" aria-label="Toggle light or dark">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer class="footer">
+  <p><strong>{{ site.class_name }}</strong> · {{ site.teacher }} · <a href="{{ site.church.website }}">{{ site.church.name }}</a>, {{ site.church.town }}</p>
+  <p>{{ site.church.address }} · {{ site.meetings | join(' · ') }}</p>
+</footer>
+<div class="modal" id="clip-modal" hidden>
+  <div class="modal-backdrop" data-action="close"></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="clip-modal-title">
+    <div class="modal-head">
+      <p id="clip-modal-title"></p>
+      <button class="tool" data-action="close" aria-label="Close video">✕</button>
+    </div>
+    <div class="modal-video"></div>
+    <p class="modal-foot"><a class="modal-yt" href="#" target="_blank" rel="noopener">Open on YouTube ↗</a> <span class="kbd-hint">Esc to close</span></p>
+  </div>
+</div>
+<script src="{{ root }}assets/app.js?v={{ build_id }}"></script>
+</body>
+</html>

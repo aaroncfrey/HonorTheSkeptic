@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{ site.class_name }} · Week {{ lesson.week }}: {{ lesson.title }}</title>
+<style>
+@font-face{font-family:"Lora";src:url("{{ asset_base }}fonts/Lora.woff2") format("woff2");font-weight:400 700}
+@font-face{font-family:"Lora";src:url("{{ asset_base }}fonts/Lora-Italic.woff2") format("woff2");font-weight:400 700;font-style:italic}
+@font-face{font-family:"Inter";src:url("{{ asset_base }}fonts/Inter-Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Inter";src:url("{{ asset_base }}fonts/Inter-SemiBold.woff2") format("woff2");font-weight:600}
+@font-face{font-family:"Inter";src:url("{{ asset_base }}fonts/Inter-Bold.woff2") format("woff2");font-weight:700}
+@page{size:Letter;margin:.5in .6in .6in}
+:root{--ink:#1c2230;--ink2:#474e5e;--muted:#737889;--line:#d9d2c4;--accent:#93371f;--soft:#f5ebe5;--gold:#a8812f}
+*{box-sizing:border-box}
+html{font-size:10pt}
+body{margin:0;font-family:"Lora",Georgia,serif;color:var(--ink);line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.mast{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6pt;font:600 7.5pt "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.mast .r{text-align:right}
+.mast b{color:var(--accent)}
+h1{font-size:23pt;line-height:1.1;margin:10pt 0 2pt;font-weight:600;letter-spacing:-.01em}
+.sub{font-size:12pt;color:var(--ink2);margin:0 0 10pt;font-style:italic}
+.big{background:var(--soft);border-left:3pt solid var(--accent);padding:8pt 11pt;margin:0 0 12pt;font-size:11.5pt;line-height:1.4}
+.big span{display:block;font:700 6.5pt "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:2pt}
+.sec{margin:0 0 8pt;break-inside:avoid}
+.sec.long{break-inside:auto}
+.kick{font:700 6.8pt "Inter",sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin:0 0 2pt}
+h2{font-size:13pt;margin:0 0 4pt;font-weight:600;break-after:avoid}
+p{margin:0 0 5pt}
+.bq{font-size:13pt;font-style:italic;line-height:1.35;margin:2pt 0 6pt}
+.passages{margin:0;padding:0;list-style:none}
+.passages li{display:grid;grid-template-columns:1.35in 1fr;gap:8pt;padding:1.5pt 0;border-top:.5pt dotted var(--line)}
+.passages li:first-child{border-top:0}
+.passages li.wt{grid-template-columns:1fr;gap:1pt}
+.ref{font:600 8.8pt "Inter",sans-serif}
+.verse{margin:1pt 0 2pt;padding-left:7pt;border-left:1.5pt solid var(--gold);font-size:10pt}
+.verse p{margin:0}
+.pn{color:var(--ink2)}
+.clip{display:grid;grid-template-columns:1fr .95in;gap:10pt;border:1pt solid var(--line);border-radius:6pt;padding:8pt 10pt;break-inside:avoid}
+.clip .t{font-weight:600;font-size:11pt;margin:0}
+.clip .s{font:8pt "Inter",sans-serif;color:var(--muted);margin:1pt 0 4pt}
+.clip .lf{font:700 6.5pt "Inter",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:5pt 0 1pt}
+.clip ul{margin:0;padding-left:12pt}
+.clip .qr{text-align:center;font:7pt/1.25 "Inter",sans-serif;color:var(--muted)}
+.clip .qr svg{width:.95in;height:.95in;display:block}
+.clip .url{font:7.5pt "Inter",sans-serif;color:var(--ink2);word-break:break-all;margin-top:4pt}
+ol.q{margin:0;padding-left:15pt}
+ol.q li{margin:0 0 3pt;padding-left:2pt}
+.lines{margin:2pt 0 7pt}
+.lines i{display:block;height:16pt;border-bottom:.6pt solid var(--line)}
+.pull{margin:2pt 0;padding-left:10pt;border-left:2pt solid var(--accent);font-style:italic;font-size:11pt}
+.pull p{margin:0 0 3pt}
+.pull cite{display:block;font:600 8pt "Inter",sans-serif;font-style:normal;color:var(--muted)}
+.notes h2{margin-top:4pt}
+.foot{margin-top:10pt;padding-top:8pt;border-top:1pt solid var(--line);display:flex;gap:12pt;align-items:center;font:8pt/1.45 "Inter",sans-serif;color:var(--ink2);break-inside:avoid}
+.foot svg{width:.75in;height:.75in;flex:none}
+.foot b{color:var(--ink)}
+.hebrew,[lang="he"]{font-family:"SBL Hebrew","Ezra SIL","Times New Roman",serif;font-size:2.2em;direction:rtl}
+.greek,[lang="grc"]{font-size:1.25em}
+</style>
+</head>
+<body>
+<div class="mast"><div><b>{{ site.class_name }}</b> · Week {{ lesson.week }} of {{ lessons_all|length }}</div><div class="r">{{ site.church.name }} · {{ site.church.town }}{% if lesson.date_label %}<br>{{ lesson.date_label }}{% endif %}</div></div>
+<h1>{{ lesson.title }}</h1>
+{% if lesson.subtitle %}<p class="sub">{{ lesson.subtitle }}</p>{% endif %}
+{% if lesson.big_idea %}<div class="big"><span>Big idea</span>{{ lesson.big_idea }}</div>{% endif %}
+
+{% for s in lesson.sections if s.handout != false %}
+<div class="sec{% if s.type == 'scripture' and s.passages|length > 6 %} long{% endif %}">
+  {% if s.kicker %}<p class="kick">{{ s.kicker }}</p>{% endif %}
+  {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+  {% if s.type == 'text' %}{{ s.body | md }}
+  {% elif s.type == 'question' %}<p class="bq">{{ s.text }}</p>{% if s.body %}{{ s.body | md }}{% endif %}{% if s.note_lines %}<div class="lines">{% for i in range(s.note_lines) %}<i></i>{% endfor %}</div>{% endif %}
+  {% elif s.type == 'scripture' %}
+    {% if s.body %}{{ s.body | md }}{% endif %}
+    <ul class="passages">{% for p in s.passages %}<li class="{% if p.text %}wt{% endif %}"><span class="ref">{{ p.ref }}</span>{% if p.text %}<div class="verse">{{ p.text | md }}</div>{% endif %}{% if p.note %}<span class="pn">{{ p.note | mdi }}</span>{% endif %}</li>{% endfor %}</ul>
+  {% elif s.type == 'clip' %}
+    <div class="clip">
+      <div>
+        <p class="t">{{ s.title }}</p>
+        <p class="s">{% if s.speaker %}{{ s.speaker }}{% endif %}{% if s.channel and s.channel != s.speaker %} · {{ s.channel }}{% endif %} · {{ s.start }}{% if s.end %}–{{ s.end }}{% endif %}</p>
+        {% if s.setup %}{{ s.setup | md }}{% endif %}
+        {% if s.listen_for %}<p class="lf">Listen for</p><ul>{% for x in s.listen_for %}<li>{{ x | mdi }}</li>{% endfor %}</ul>{% endif %}
+        <p class="url">{{ s.url }}</p>
+      </div>
+      <div class="qr">{{ s.qr_svg | safe }}Scan to watch</div>
+    </div>
+  {% elif s.type == 'questions' %}
+    {% if s.body %}{{ s.body | md }}{% endif %}
+    <ol class="q">{% for q in s['items'] %}<li>{{ q | mdi }}{% if s.note_lines %}<div class="lines">{% for i in range(s.note_lines) %}<i></i>{% endfor %}</div>{% endif %}</li>{% endfor %}</ol>
+  {% elif s.type == 'quote' %}<div class="pull">{{ s.text | md }}{% if s.source %}<cite>— {{ s.source | mdi }}</cite>{% endif %}</div>
+  {% elif s.type == 'activity' %}{% if s.body %}{{ s.body | md }}{% endif %}{% if s.steps %}<ol class="q">{% for x in s.steps %}<li>{{ x | mdi }}</li>{% endfor %}</ol>{% endif %}
+  {% endif %}
+</div>
+{% endfor %}
+
+{% if lesson.handout_notes_lines %}
+<div class="sec notes"><h2>Notes</h2><div class="lines">{% for i in range(lesson.handout_notes_lines) %}<i></i>{% endfor %}</div></div>
+{% endif %}
+
+<div class="foot">
+  {{ site_qr_svg | safe }}
+  <div><b>Watch the clips and see every lesson online:</b><br>{{ site.url | replace('https://','') }}<br>{{ site.class_name }} · {{ site.teacher }} · {{ site.meetings | join(' · ') }}<br>{{ site.church.name }}, {{ site.church.address }}</div>
+</div>
+</body>
+</html>

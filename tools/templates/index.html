@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block bodyclass %}home{% endblock %}
+{% block main %}
+<section class="hero">
+  <p class="eyebrow">{{ site.class_name }} · {{ site.church.name }}</p>
+  <h1>{{ site.site_title }}</h1>
+  <p class="lede">{{ site.tagline }}</p>
+  {% if site.epigraph %}
+  <blockquote class="epigraph"><p>“{{ site.epigraph.text }}”</p><cite>{{ site.epigraph.ref }}</cite></blockquote>
+  {% endif %}
+  <ul class="meet">
+    {% for m in site.meetings %}<li>{{ m }}</li>{% endfor %}
+    <li>{{ site.church.address }}</li>
+  </ul>
+</section>
+
+<section class="weeks" aria-labelledby="weeks-h">
+  <h2 id="weeks-h" class="section-label">The four weeks</h2>
+  <ol class="week-grid">
+  {% for l in lessons_all %}
+    {% if l.live %}
+    <li class="week-card live">
+      <a href="{{ root }}{{ l.slug }}/">
+        <span class="wk">Week {{ l.week }}{% if l.date_label %} · {{ l.date_label }}{% endif %}{% if l.status == 'draft' %} · <em>draft</em>{% endif %}</span>
+        <span class="wt">{{ l.title }}</span>
+        {% if l.subtitle %}<span class="ws">{{ l.subtitle }}</span>{% endif %}
+        <span class="go">Open lesson →</span>
+      </a>
+    </li>
+    {% elif site.show_upcoming %}
+    <li class="week-card soon">
+      <div>
+        <span class="wk">Week {{ l.week }}</span>
+        <span class="wt">{{ l.title }}</span>
+        {% if l.subtitle %}<span class="ws">{{ l.subtitle }}</span>{% endif %}
+        <span class="go">Coming {{ l.date_label or 'soon' }}</span>
+      </div>
+    </li>
+    {% endif %}
+  {% endfor %}
+  </ol>
+</section>
+
+<section class="about prose">
+  <h2 class="section-label">About the class</h2>
+  {{ site.about | md }}
+  <p class="muted">Questions? Contact {{ site.teacher }} at <a href="mailto:{{ site.church.email }}">{{ site.church.email }}</a> or {{ site.church.phone }}.</p>
+</section>
+{% endblock %}

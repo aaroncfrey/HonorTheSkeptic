@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Week {{ lesson.week }}: {{ lesson.title }} · {{ site.site_title }}{% endblock %}
+{% block description %}{{ lesson.summary or lesson.subtitle or site.tagline }}{% endblock %}
+{% block canonical %}/{{ lesson.slug }}/{% endblock %}
+{% block bodyclass %}lesson{% endblock %}
+{% block main %}
+<article class="lesson-wrap">
+<header class="lesson-head" data-slide>
+  <p class="eyebrow">Week {{ lesson.week }} of {{ lessons_all|length }}{% if lesson.date_label %} · {{ lesson.date_label }}{% endif %}</p>
+  <h1>{{ lesson.title }}</h1>
+  {% if lesson.subtitle %}<p class="lede">{{ lesson.subtitle }}</p>{% endif %}
+  {% if lesson.big_idea %}<p class="big-idea"><span>Big idea</span>{{ lesson.big_idea }}</p>{% endif %}
+  <div class="lesson-actions">
+    <button class="btn primary" data-action="present">▶ Present</button>
+    {% for h in lesson.handouts %}<a class="btn" href="{{ root }}{{ h.path }}" download>{{ h.label }}</a>{% endfor %}
+  </div>
+  {% if lesson.contents|length > 2 %}
+  <nav class="toc" aria-label="In this lesson">
+    <p class="section-label">In this lesson</p>
+    <ol>{% for s in lesson.contents %}<li><a href="#{{ s.id }}">{{ s.label }}</a></li>{% endfor %}</ol>
+  </nav>
+  {% endif %}
+</header>
+
+{% for s in lesson.sections %}
+<section class="block block-{{ s.type }}" id="{{ s.id }}" data-slide>
+  {% if s.kicker %}<p class="kicker">{{ s.kicker }}</p>{% endif %}
+  {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
+
+  {% if s.type == 'text' %}
+    <div class="prose">{{ s.body | md }}</div>
+
+  {% elif s.type == 'question' %}
+    <p class="big-question">{{ s.text }}</p>
+    {% if s.body %}<div class="prose">{{ s.body | md }}</div>{% endif %}
+
+  {% elif s.type == 'scripture' %}
+    {% if s.body %}<div class="prose intro">{{ s.body | md }}</div>{% endif %}
+    <div class="passages">
+    {% for p in s.passages %}
+      <div class="passage{% if p.text %} has-text{% endif %}">
+        <p class="ref"><a href="{{ p.link }}" target="_blank" rel="noopener" title="Read {{ p.ref }} ({{ site.bible_version }})">{{ p.ref }}</a></p>
+        {% if p.text %}<blockquote class="verse">{{ p.text | md }}</blockquote>{% endif %}
+        {% if p.note %}<p class="pnote">{{ p.note | mdi }}</p>{% endif %}
+      </div>
+    {% endfor %}
+    </div>
+
+  {% elif s.type == 'clip' %}
+    <div class="clip">
+      <button class="clip-play" data-action="play" data-yt="{{ s.youtube }}" data-start="{{ s.start_s }}"{% if s.end_s %} data-end="{{ s.end_s }}"{% endif %} data-title="{{ s.title }}" data-url="{{ s.url }}">
+        <img src="https://i.ytimg.com/vi/{{ s.youtube }}/hqdefault.jpg" alt="" loading="lazy">
+        <span class="play-badge"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg> Play clip</span>
+        <span class="clip-time">{{ s.start }}{% if s.end %}–{{ s.end }}{% endif %}{% if s.length %} · {{ s.length }}{% endif %}</span>
+      </button>
+      <div class="clip-meta">
+        <p class="clip-title">{{ s.title }}</p>
+        <p class="clip-source">{% if s.speaker %}{{ s.speaker }}{% endif %}{% if s.channel and s.channel != s.speaker %} · {{ s.channel }}{% endif %}{% if s.year %} · {{ s.year }}{% endif %}</p>
+        {% if s.setup %}<div class="prose small">{{ s.setup | md }}</div>{% endif %}
+        {% if s.listen_for %}
+          <p class="label">Listen for</p>
+          <ul class="listen">{% for x in s.listen_for %}<li>{{ x | mdi }}</li>{% endfor %}</ul>
+        {% endif %}
+        {% if s.ties_to %}<p class="ties">Connects to: {% for r in s.ties_to_links %}<a href="{{ r.link }}" target="_blank" rel="noopener">{{ r.ref }}</a>{% if not loop.last %}; {% endif %}{% endfor %}</p>{% endif %}
+        <p class="clip-yt"><a href="{{ s.url }}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p>
+      </div>
+    </div>
+
+  {% elif s.type == 'questions' %}
+    {% if s.body %}<div class="prose intro">{{ s.body | md }}</div>{% endif %}
+    <ol class="qlist">{% for q in s['items'] %}<li tabindex="0">{{ q | mdi }}</li>{% endfor %}</ol>
+
+  {% elif s.type == 'quote' %}
+    <figure class="pull">
+      <blockquote>{{ s.text | md }}</blockquote>
+      {% if s.source %}<figcaption>{{ s.source | mdi }}</figcaption>{% endif %}
+    </figure>
+
+  {% elif s.type == 'activity' %}
+    {% if s.body %}<div class="prose">{{ s.body | md }}</div>{% endif %}
+    {% if s.steps %}<ol class="steps">{% for x in s.steps %}<li>{{ x | mdi }}</li>{% endfor %}</ol>{% endif %}
+    {% if s.minutes %}<p class="muted">About {{ s.minutes }} minutes</p>{% endif %}
+
+  {% elif s.type == 'image' %}
+    <figure class="img"><img src="{{ root }}{{ s.src }}" alt="{{ s.alt or '' }}">{% if s.caption %}<figcaption>{{ s.caption | mdi }}</figcaption>{% endif %}</figure>
+  {% endif %}
+</section>
+{% endfor %}
+
+{% if lesson.downloads %}
+<section class="block block-downloads" id="downloads">
+  <h2>Files for this week</h2>
+  <ul class="downloads">
+    {% for d in lesson.downloads %}<li><a href="{{ root }}{{ d.file }}" download>{{ d.label }}</a></li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<nav class="pager" aria-label="Other weeks">
+  {% if lesson.prev %}<a href="{{ root }}{{ lesson.prev.slug }}/">← Week {{ lesson.prev.week }}: {{ lesson.prev.title }}</a>{% else %}<a href="{{ root }}">← All weeks</a>{% endif %}
+  {% if lesson.next %}<a href="{{ root }}{{ lesson.next.slug }}/">Week {{ lesson.next.week }}: {{ lesson.next.title }} →</a>{% endif %}
+</nav>
+</article>
+
+<div class="presenter-bar" hidden>
+  <button class="tool" data-action="prev" aria-label="Previous">←</button>
+  <span class="pcount"></span>
+  <button class="tool" data-action="next" aria-label="Next">→</button>
+  <button class="tool" data-action="exit" aria-label="Exit presenting">Exit</button>
+</div>
+{% endblock %}

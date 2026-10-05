@@ -1,0 +1,6 @@
+preview/
+tools/.handout-*.html
+__pycache__/
+desktop.ini
+.DS_Store
+Thumbs.db
