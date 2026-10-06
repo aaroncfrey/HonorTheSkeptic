@@ -22,7 +22,7 @@ meetings:
   - "Repeated Thursdays at 11:00 AM"
 
 # Bible version used for "Read" links (BibleGateway version code)
-bible_version: "ESV"
+bible_version: "NIV"
 
 # Epigraph on the home page
 epigraph:
