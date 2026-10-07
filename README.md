@@ -15,6 +15,14 @@ Each lesson is written once, in a simple text file. The website page, the PDF ha
 | `preview/` | Private preview that includes drafts. Never uploaded (listed in `.gitignore`). |
 | `tools/` | The build script and page templates |
 
+## Proofreading the preview
+
+Double-click **Preview site.bat** (in this folder). It opens the preview at `http://localhost:8000` in your browser, where YouTube clips play the same way they will on the live site. Close the black window when you're done. (Opening `preview/index.html` directly from the folder won't work for videos: YouTube refuses to play embeds on a page with no web address, showing Error 153.)
+
+**Editing the Word handout is fine.** Aaron often proofreads by editing `preview/handouts/doubters-welcome-week-N.docx` directly. Before any rebuild, Claude saves that file to `../Handout edits (originals)/`, carries the edits into `week-N.yml`, and then rebuilds, so the website, PDF and Word handout all match. A rebuild without that step would overwrite the Word edits.
+
+Quotes and apostrophes are turned into curly ones (’ “ ”) automatically when the site is built, so lesson files can use plain ' and ".
+
 ## Lesson status
 
 Every lesson file has `status:`

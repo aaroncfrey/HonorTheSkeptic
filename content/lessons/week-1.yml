@@ -1,19 +1,19 @@
 # Week 1 lesson. See README.md for every field and section type.
 week: 1
 title: "Who They Are"
-subtitle: "Made in God's image, loved by the Father, gifted before they believe"
-date:            # Wednesday class date, e.g. 2026-10-14
-status: draft    # planned | draft | published
+subtitle: "Made in God's image, loved by the Father, gifted for the whole family's benefit"
+date: 2026-10-07   # Wednesday class date, e.g. 2026-10-14
+status: published    # planned | draft | published
 summary: "Before a skeptic believes anything, God has already given them dignity, love, and gifts."
-big_idea: "We honor skeptics because God already does: he made them in his image, he loves them, and he has gifted them, all before they believe a word we say."
-handout_notes_lines: 3
+big_idea: "We honor skeptics because they are children of God like us. Their skepticism does not change who God made them to be and how much they are needed in his family."
+handout_notes_lines: 0
 
 sections:
   - type: question
     kicker: "Opening"
     heading: "Someone you know"
-    text: "Think of someone you know who doubts or rejects the Christian faith. What is one thing about them you admire?"
-    note_lines: 2
+    text: "Write the name or initials of someone you know who doubts or rejects the Christian faith. What is one thing about them you admire?"
+    note_lines: 3
 
   - type: clip
     kicker: "Before we begin"
@@ -24,83 +24,146 @@ sections:
     year: 2023
     youtube: skuBFLns8WA
     start: "1:54"
-    end: "3:04"
+    end: "3:09"
     setup: |
-      Gavin Ortlund is a Protestant pastor and scholar. Before he critiques a belief that others
-      hold dear, he stops to talk about what it feels like to be on the receiving end, and he
-      shares a quote from Francis Schaeffer on how apologetics can go wrong.
+      Before critiquing a belief others hold dear (other Christians, in this case), Protestant scholar
+      Gavin Ortlund stops to talk about what it feels like to be on the receiving end and shares the Schaeffer quote below.
     listen_for:
-      - "Why he says defending the faith is not a game or just an intellectual exercise"
-      - "What he says you owe a person after you've knocked them over"
+      - "Why he says defending the faith is not a game"
+      - "How love handles the job of speaking in a way that might \u201cknock someone over\u201d"
     ties_to: ["James 3:1", "James 3:9-10", "2 Timothy 2:24-25"]
+
+  - type: quote
+    kicker: "The quote in the clip"
+    heading: "Not a game"
+    text: |
+      "I need to remind myself constantly that this is not a game I am playing. If I begin to enjoy it as a kind of intellectual exercise, then I am cruel and can expect no real spiritual results. As I push the man off his false balance, he must be able to feel that I care for him. Otherwise I will only end up destroying him, and the cruelty and ugliness of it all will destroy me as well. … Pushing him towards the logic of his presuppositions is going to cause him pain; therefore, I must not push any further than I need to."
+    source: "Francis A. Schaeffer, *The God Who Is There* (1968), in *The Francis A. Schaeffer Trilogy* (Crossway, 1990), 138"
+
+  - type: questions
+    heading: "Think it over"
+    items:
+      - "Schaeffer says the other person \"must be able to *feel* that I care for him.\" What makes someone feel cared for, or not, in a conversation about faith?"
+      - "How do you figure out how much pain in a conversation is \"necessary\" or \"unavoidable\"? What advice or models can you think of to help with this?"
+    note_lines: 2
 
   - type: scripture
     kicker: "Who they are · 1"
     heading: "Made in God's image"
     passages:
       - ref: "Genesis 1:26–27"
-        note: "Every human being, male and female, is made in the image of God."
       - ref: "Genesis 9:6"
-        note: "After the fall and the flood, the image remains. That is why a human life is sacred."
-      - ref: "Psalm 8"
-        note: "God has crowned human beings with glory and honor."
+      - ref: "Psalm 8:3–8"
       - ref: "James 3:9–10"
-        note: "With the same tongue we bless God and curse people made in his likeness."
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "“I intend to treat them like that”"
+    title: "Why This Oxford Mathematician is Confident God Exists"
+    channel: "Alex O'Connor"
+    speaker: "John Lennox"
+    youtube: 3gKCwldMZS8
+    start: "1:20:12"
+    end: "1:22:13"
+    setup: |
+      Oxford mathematician John Lennox, in conversation with skeptic Alex O'Connor, remembers
+      growing up in Northern Ireland during the Troubles, when his own family suffered bombing.
+    listen_for:
+      - "What his father said when Lennox asked why he took the risk"
+      - "What Lennox says that answer taught him to do"
+    ties_to: ["Genesis 1:27", "James 3:9"]
+    note_lines: 2
 
   - type: scripture
     kicker: "Who they are · 2"
     heading: "Loved by the Father"
     passages:
       - ref: "Matthew 5:44–45"
-        note: "Love your enemies. The Father sends sun and rain on the just and the unjust."
       - ref: "John 3:16"
-        note: "God so loved the world."
-      - ref: "1 Timothy 2:4"
-        note: "God desires all people to be saved and to come to the knowledge of the truth."
-      - ref: "Ezekiel 33:11"
-        note: "God takes no pleasure in the death of the wicked."
+      - ref: "1 Timothy 2:3–4"
       - ref: "Jonah 4:10–11"
-        note: "God's compassion for Nineveh, the city Jonah wanted destroyed."
+    passage_space: 1
 
   - type: scripture
     kicker: "Who they are · 3"
     heading: "Gifted before they believe"
     passages:
       - ref: "Genesis 4:20–22"
-        note: "From Cain's line come herding, music, and metalwork."
-      - ref: "Exodus 18"
-        note: "Jethro, a Midianite priest, gives Moses the wise counsel he needed."
-      - ref: "1 Kings 5; 7:13–14"
-        note: "Hiram of Tyre and his craftsmen help build God's temple."
+      - ref: "Exodus 18:13–24"
+      - ref: "1 Kings 5:1–12"
       - ref: "Isaiah 45:1"
-        note: "God calls Cyrus, a pagan king, his anointed."
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "Before the debate"
+    title: "Alex O'Connor & Glen Scrivener: Morality, Freedom, Slavery & the Bible (Uncommon Ground)"
+    channel: "Justin Brierley"
+    speaker: "Glen Scrivener"
+    youtube: "-ZnVNM8lkGw"
+    start: "3:46"
+    end: "4:35"
+    setup: |
+      Before a long debate with skeptic Alex O'Connor, evangelist Glen Scrivener is asked
+      what he thinks of the man he is about to disagree with.
+    listen_for:
+      - "The gifts Scrivener sees in O'Connor"
+    ties_to: ["Exodus 18", "Acts 17:28"]
+    note_lines: 2
 
   - type: questions
     heading: "Talk it over"
     items:
-      - "Which of these three (image, love, gifts) is easiest for you to forget when you're talking with a skeptic?"
-      - "Jethro and Hiram weren't Israelites, yet God used their wisdom and skill. What gifts have you seen in non-believers you know?"
-      - "James says we bless God and curse people made in his likeness *with the same tongue*. Where do Christians slip into that online or in person?"
+      - "Image, love, gifts: which is easiest for you to forget when you're talking with a skeptic? Why?"
+      - "What gifts have you seen in non-believers you know? Has God used any of them in your own life?"
+      - "James says we bless God and curse people made in his likeness *with the same tongue*. Where have you seen that happen, online or in person?"
+    note_lines: 2
 
   - type: scripture
     kicker: "Then comes the command"
     heading: "Honor everyone"
-    body: |
-      The command to honor comes *after* who they are. We don't respect people to win them. We
-      respect them because of what God has already done for them.
     passages:
       - ref: "1 Peter 2:17"
-        note: "Honor everyone."
       - ref: "1 Peter 3:15–16"
-        note: "Always be ready to give a reason for your hope, with gentleness and respect."
       - ref: "2 Timothy 2:24–26"
-        note: "The Lord's servant must be kind to everyone and correct opponents with gentleness."
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "\"I love you. Thank you.\""
+    title: "Breaking Down Walls: A Christian and an Atheist in Conversation"
+    channel: "Sean McDowell"
+    speaker: "Drew (Genetically Modified Skeptic) and Sean McDowell"
+    year: 2021
+    youtube: VJX28l54YxE
+    start: "41:33"
+    end: "45:43"
+    setup: |
+      Atheist YouTuber Drew has just described how Christians treated him after he shared his
+      doubts. Sean McDowell responds, then asks Drew for advice.
+    listen_for:
+      - "What McDowell says first, before he asks anything"
+      - "Drew's three steps for a parent whose child is doubting"
+      - "How McDowell receives the advice"
+    ties_to: ["Exodus 18:24", "James 1:19", "1 Peter 3:15-16"]
+    note_lines: 1
 
   - type: text
     heading: "One guardrail"
     body: |
-      Honoring someone as God's image-bearer doesn't soften the claim that they need Christ.
-      We tell them about Christ *because* they are worth that much to God.
+      Honoring someone as God's image-bearer doesn't mean that all truth is relative ("your truth"
+      vs. "my truth," etc.). It also doesn't mean that skeptics don't need to hear about Christ. We
+      honor them because we know who they are, who they are made to be. They are worthy of honor as
+      precious and beloved members of the family, even if estranged. Every member of this family
+      needs every other one. That's how God designed us.
+
+      So, we tell them about Christ. Knowing Christ as we do, how could we not? Being gentle in
+      discussion about faith, truth and eternity isn't weakness in evangelism. Prioritizing a
+      listening ear isn't about giving up on sharing the most important story that has ever been
+      told by a human tongue. It is showing the same love and patience that God showed to all of us
+      by sending his Son to sit with us in our suffering. God's Word in human flesh didn't just
+      preach. He connected. He sympathized. He healed.
 
   - type: activity
     kicker: "This week"
@@ -108,4 +171,4 @@ sections:
     steps:
       - "Pray by name for the person you thought of at the start of class."
       - "Thank God for one specific gift you see in them."
-      - "If it fits naturally, tell them something you appreciate about them. No agenda."
+      - "If it fits naturally, tell them something you genuinely appreciate about them."

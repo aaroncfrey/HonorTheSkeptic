@@ -23,6 +23,9 @@ h1{font-size:23pt;line-height:1.1;margin:10pt 0 2pt;font-weight:600;letter-spaci
 .big span{display:block;font:700 6.5pt "Inter",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:2pt}
 .sec{margin:0 0 8pt;break-inside:avoid}
 .sec.long{break-inside:auto}
+.sec:has(> ol.q){break-inside:auto}
+ol.q > li{break-inside:avoid}
+.sec h2{break-after:avoid}
 .kick{font:700 6.8pt "Inter",sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin:0 0 2pt}
 h2{font-size:13pt;margin:0 0 4pt;font-weight:600;break-after:avoid}
 p{margin:0 0 5pt}
@@ -46,7 +49,11 @@ p{margin:0 0 5pt}
 ol.q{margin:0;padding-left:15pt}
 ol.q li{margin:0 0 3pt;padding-left:2pt}
 .lines{margin:2pt 0 7pt}
-.lines i{display:block;height:16pt;border-bottom:.6pt solid var(--line)}
+.lines i{display:block;height:22pt}
+.passages li.space{border:0!important;padding:0!important;display:block}
+.passages.spaced li{border-top:0;break-inside:avoid}
+.passages.spaced .lines{margin:0 0 2pt}
+.passages.spaced .lines i{height:18pt}
 .pull{margin:2pt 0;padding-left:10pt;border-left:2pt solid var(--accent);font-style:italic;font-size:11pt}
 .pull p{margin:0 0 3pt}
 .pull cite{display:block;font:600 8pt "Inter",sans-serif;font-style:normal;color:var(--muted)}
@@ -65,14 +72,15 @@ ol.q li{margin:0 0 3pt;padding-left:2pt}
 {% if lesson.big_idea %}<div class="big"><span>Big idea</span>{{ lesson.big_idea }}</div>{% endif %}
 
 {% for s in lesson.sections if s.handout != false %}
-<div class="sec{% if s.type == 'scripture' and s.passages|length > 6 %} long{% endif %}">
+<div class="sec{% if s.type == 'scripture' and (s.passages|length > 6 or s.passage_space) %} long{% endif %}">
   {% if s.kicker %}<p class="kick">{{ s.kicker }}</p>{% endif %}
   {% if s.heading %}<h2>{{ s.heading }}</h2>{% endif %}
   {% if s.type == 'text' %}{{ s.body | md }}
   {% elif s.type == 'question' %}<p class="bq">{{ s.text }}</p>{% if s.body %}{{ s.body | md }}{% endif %}{% if s.note_lines %}<div class="lines">{% for i in range(s.note_lines) %}<i></i>{% endfor %}</div>{% endif %}
   {% elif s.type == 'scripture' %}
     {% if s.body %}{{ s.body | md }}{% endif %}
-    <ul class="passages">{% for p in s.passages %}<li class="{% if p.text %}wt{% endif %}"><span class="ref">{{ p.ref }}</span>{% if p.text %}<div class="verse">{{ p.text | md }}</div>{% endif %}{% if p.note %}<span class="pn">{{ p.note | mdi }}</span>{% endif %}</li>{% endfor %}</ul>
+    <ul class="passages{% if s.passage_space %} spaced{% endif %}">{% for p in s.passages %}<li class="{% if p.text %}wt{% endif %}"><span class="ref">{{ p.ref }}</span>{% if p.text %}<div class="verse">{{ p.text | md }}</div>{% endif %}{% if p.note %}<span class="pn">{{ p.note | mdi }}</span>{% endif %}</li>{% if s.passage_space %}<li class="space"><div class="lines">{% for i in range(s.passage_space) %}<i></i>{% endfor %}</div></li>{% endif %}{% endfor %}</ul>
+    {% if s.note_lines %}<div class="lines">{% for i in range(s.note_lines) %}<i></i>{% endfor %}</div>{% endif %}
   {% elif s.type == 'clip' %}
     <div class="clip">
       <div>
@@ -84,6 +92,7 @@ ol.q li{margin:0 0 3pt;padding-left:2pt}
       </div>
       <div class="qr">{{ s.qr_svg | safe }}Scan to watch</div>
     </div>
+    {% if s.note_lines %}<div class="lines">{% for i in range(s.note_lines) %}<i></i>{% endfor %}</div>{% endif %}
   {% elif s.type == 'questions' %}
     {% if s.body %}{{ s.body | md }}{% endif %}
     <ol class="q">{% for q in s['items'] %}<li>{{ q | mdi }}{% if s.note_lines %}<div class="lines">{% for i in range(s.note_lines) %}<i></i>{% endfor %}</div>{% endif %}</li>{% endfor %}</ol>

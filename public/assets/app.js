@@ -26,7 +26,7 @@
     var src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
       '?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=' + start + (end ? '&end=' + end : '');
     modal.querySelector('#clip-modal-title').textContent = btn.dataset.title || '';
-    modal.querySelector('.modal-yt').href = btn.dataset.url || ('https://youtu.be/' + id + '?t=' + start);
+    modal.querySelector('.modal-yt').href = btn.dataset.url || ('https://www.youtube.com/watch?v=' + id + '&t=' + start + 's');
     modal.querySelector('.modal-video').innerHTML =
       '<iframe src="' + src + '" title="YouTube video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" ' +
       'allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>';

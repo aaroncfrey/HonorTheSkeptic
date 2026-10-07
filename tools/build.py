@@ -57,6 +57,37 @@ def fmt_len(a, b):
     m, s = divmod(d, 60)
     return f"{m}:{s:02d}" if m else f"{s} sec"
 
+# ---------------------------------------------------------------- curly quotes
+# Aaron prefers typographic quotes (’ “ ”) everywhere. Lesson files can use plain ' and ";
+# they are converted here, at load time, so the website, PDF and Word handouts all match.
+# Text inside HTML tags (e.g. <span lang="he">) and the keys below are left alone.
+NO_SMART = {"youtube", "start", "end", "date", "status", "file", "path", "url", "link", "id", "type", "slug"}
+
+def smart(text):
+    if not isinstance(text, str) or isinstance(text, Markup) or ("'" not in text and '"' not in text):
+        return text
+    out = []
+    for part in re.split(r"(<[^>]*>)", text):
+        if part.startswith("<") and part.endswith(">"):
+            out.append(part); continue
+        part = re.sub(r"(?<=\w)'(?=\w)", "\u2019", part)                 # don't, God's
+        part = re.sub(r"'(?=\d0s\b)", "\u2019", part)                     # '90s
+        part = re.sub(r"(^|[\s(\[{\u2014\u2013/-])'", "\\1\u2018", part)   # opening '
+        part = part.replace("'", "\u2019")
+        part = re.sub(r'(^|[\s(\[{\u2014\u2013/-])"', "\\1\u201c", part)   # opening "
+        part = part.replace('"', "\u201d")
+        out.append(part)
+    return "".join(out)
+
+def smarten(obj, key=None):
+    if key in NO_SMART:
+        return obj
+    if isinstance(obj, dict):
+        return {k: smarten(v, k) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [smarten(v, key) for v in obj]
+    return smart(obj)
+
 def slugify(s):
     s = re.sub(r"[^\w\s-]", "", str(s).lower())
     return re.sub(r"[\s_]+", "-", s).strip("-")[:48] or "section"
@@ -85,7 +116,7 @@ def qr_png(url):
     return buf
 
 def yt_url(vid, start):
-    return f"https://youtu.be/{vid}" + (f"?t={start}" if start else "")
+    return f"https://www.youtube.com/watch?v={vid}" + (f"&t={start}s" if start else "")
 
 def label_for(s):
     if s.get("heading"):
@@ -95,10 +126,10 @@ def label_for(s):
 
 # ---------------------------------------------------------------- load
 def load(preview):
-    site = yaml.safe_load((CONTENT / "site.yml").read_text(encoding="utf-8"))
+    site = smarten(yaml.safe_load((CONTENT / "site.yml").read_text(encoding="utf-8")))
     lessons = []
     for f in sorted(CONTENT.glob("lessons/week-*.yml"), key=lambda p: int(re.findall(r"\d+", p.stem)[0])):
-        L = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+        L = smarten(yaml.safe_load(f.read_text(encoding="utf-8")) or {})
         L.setdefault("week", int(re.findall(r"\d+", f.stem)[0]))
         L["slug"] = f"week-{L['week']}"
         L["status"] = str(L.get("status", "planned")).lower()
@@ -157,16 +188,17 @@ def build_site(site, lessons, out, preview):
     common = dict(site=site, lessons_all=lessons, nav_lessons=lessons, preview=preview, build_id=build_id)
 
     # clear generated lesson folders (keeps assets/, files/, handouts/)
+    live_slugs = {L["slug"] for L in lessons if L["live"]}
     for d in out.glob("week-*"):
-        shutil.rmtree(d)
+        if d.name not in live_slugs:          # lesson no longer live: take its page down
+            try:
+                shutil.rmtree(d)
+            except OSError:
+                (d / "index.html").write_text('<!doctype html><meta http-equiv="refresh" content="0; url=../">', encoding="utf-8")
     if preview:
-        if (out / "assets").exists():
-            shutil.rmtree(out / "assets")
-        shutil.copytree(PUBLIC / "assets", out / "assets")
+        shutil.copytree(PUBLIC / "assets", out / "assets", dirs_exist_ok=True)
         if (PUBLIC / "files").exists():
-            if (out / "files").exists():
-                shutil.rmtree(out / "files")
-            shutil.copytree(PUBLIC / "files", out / "files")
+            shutil.copytree(PUBLIC / "files", out / "files", dirs_exist_ok=True)
 
     (out / "index.html").write_text(E.get_template("index.html").render(root="", lesson=None, **common), encoding="utf-8")
     for L in lessons:
@@ -183,7 +215,10 @@ def build_site(site, lessons, out, preview):
         live_bases = {Path(L["handout_base"]).name for L in lessons if L["live"]}
         for f in hdir.iterdir():
             if f.stem not in live_bases:
-                f.unlink()
+                try:
+                    f.unlink()
+                except OSError:
+                    print(f"  ! could not remove {f.name}; delete it by hand")
 
 # ---------------------------------------------------------------- handouts
 def build_handouts(site, lessons, out):
@@ -320,8 +355,7 @@ def build_docx(site, L, lessons, path):
             p = doc.add_paragraph()
             p.paragraph_format.space_after = Pt(0)
             p.paragraph_format.space_before = Pt(0)
-            p.add_run(" ").font.size = Pt(16)
-            border(p)
+            p.add_run(" ").font.size = Pt(22)  # blank writing space (no rule lines)
 
     def numbered(items, note_lines=0):
         for n, q in enumerate(items, 1):
@@ -385,6 +419,8 @@ def build_docx(site, L, lessons, path):
                     q.paragraph_format.left_indent = Inches(0.25)
                     border(q, "left", "A8812F", 8)
                     runs(q, " ".join(str(ps["text"]).split()), size=10)
+                if s.get("passage_space"): lines(s["passage_space"])
+            if s.get("note_lines"): lines(s["note_lines"])
         elif t == "clip":
             tbl = doc.add_table(rows=1, cols=2)
             widths(tbl, [5.5, 1.4])
@@ -408,6 +444,7 @@ def build_docx(site, L, lessons, path):
             cap = c1.add_paragraph(); cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
             runs(cap, "Scan to watch", size=7, color=MUTED, font="Arial")
             doc.add_paragraph().paragraph_format.space_after = Pt(2)
+            if s.get("note_lines"): lines(s["note_lines"])
         elif t == "questions":
             if s.get("body"): paras(s["body"])
             numbered(s.get("items") or [], s.get("note_lines", 0))
