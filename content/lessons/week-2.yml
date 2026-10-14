@@ -1,6 +1,117 @@
+# Week 2 lesson. See README.md for every field and section type.
 week: 2
 title: "Who We Are"
 subtitle: "One Teacher, all siblings, and learning to listen"
-date: 2026-10-14   
-status: planned
-sections: []
+date: 2026-10-14
+status: published    # planned | draft | published
+summary: "We aren't the Teacher. We're siblings who still have a lot to learn, and people can tell the difference."
+big_idea: "Christ is the one Teacher. The rest of us, believers and skeptics alike, are siblings. People who know they aren't the Teacher listen differently: firm on Christ, open to reason on a hundred other things."
+handout_notes_lines: 0
+
+sections:
+  - type: question
+    kicker: "Opening"
+    heading: "For your own good"
+    text: "Think of a time someone told you something \"for your own good\" and it didn't land. What made it hard to hear?"
+    note_lines: 3
+
+  - type: scripture
+    kicker: "Who we are · 1"
+    heading: "One Teacher, all siblings"
+    passages:
+      - ref: "Matthew 23:8–12"
+      - ref: "Matthew 23:15"
+      - ref: "Hebrews 2:11"
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "Gone off debates"
+    title: "Why This Oxford Mathematician is Confident God Exists"
+    channel: "Alex O'Connor"
+    speaker: "Alex O'Connor and John Lennox"
+    youtube: 3gKCwldMZS8
+    start: "1:25:14"
+    end: "1:28:02"
+    setup: |
+      Later in the same conversation we heard last week, skeptic Alex O'Connor and
+      John Lennox compare notes on public debates.
+    listen_for:
+      - "What Lennox says goes wrong in a debate"
+      - "What he wants instead, and what he trusts the audience to do"
+    ties_to: ["Matthew 23:8", "Proverbs 18:17"]
+    note_lines: 2
+
+  - type: scripture
+    kicker: "Who we are · 2"
+    heading: "So much to tell?"
+    passages:
+      - ref: "Romans 2:17–21"
+      - ref: "1 Corinthians 4:7"
+      - ref: "1 Corinthians 8:1–2"
+      - ref: "Luke 18:9–14"
+    passage_space: 1
+
+  - type: scripture
+    kicker: "Who we are · 3"
+    heading: "Wisdom that listens"
+    passages:
+      - ref: "James 3:1"
+      - ref: "James 3:13–18"
+      - ref: "James 1:19"
+      - ref: "Proverbs 18:13, 17"
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "\"I'm going to go back and think\""
+    title: "Alex O'Connor & Glen Scrivener: Morality, Freedom, Slavery & the Bible (Uncommon Ground)"
+    channel: "Justin Brierley"
+    speaker: "Alex O'Connor and Glen Scrivener"
+    youtube: "-ZnVNM8lkGw"
+    start: "2:27:02"
+    end: "2:30:23"
+    setup: |
+      Last week we heard Glen Scrivener before his debate with Alex O'Connor. This is
+      the end of it, two and a half hours later. Each thanks the other.
+    listen_for:
+      - "What O'Connor thanks Scrivener for"
+      - "What Scrivener says he's going to go home and do"
+    ties_to: ["James 3:17", "1 Corinthians 8:2"]
+    note_lines: 2
+
+  - type: scripture
+    kicker: "Who we are · 4"
+    heading: "The Teacher asks"
+    passages:
+      - ref: "Mark 10:46–52"
+      - ref: "Mark 7:24–30"
+    passage_space: 1
+
+  - type: questions
+    heading: "Talk it over"
+    items:
+      - "Firm on Christ, open to reason on a hundred other things. Would the skeptic you know say you're open to reason about anything? What might they name?"
+      - "Last week Schaeffer said, \"I must not push any further than I need to.\" How does remembering that you're a sibling, not the Teacher, change how hard you push?"
+      - "What could you learn from the person you named last week?"
+    note_lines: 2
+
+  - type: text
+    heading: "The not-teacher"
+    body: |
+      None of this means we stop teaching. Jesus didn't abolish teachers in Matthew 23. He
+      moved every one of us into the ranks of the siblings, under the one Teacher who is the
+      Christ. We still have something to tell: the best news there is. But we didn't invent it,
+      we didn't earn it, and we haven't finished learning it (1 Corinthians 4:7).
+
+      Skeptics can tell the difference between someone who is selling and someone who is
+      sharing. Be firm on Christ. Be open to reason about almost everything else. Ask real
+      questions, and listen to the whole answer. We all might learn something.
+
+  - type: activity
+    kicker: "This week"
+    heading: "Practice"
+    steps:
+      - "Pray again, by name, for the person you thought of last week."
+      - "Ask them one real question, one you don't already know the answer to, and listen to the whole answer."
+      - "Notice one thing you could learn from them. Thank God for it."
