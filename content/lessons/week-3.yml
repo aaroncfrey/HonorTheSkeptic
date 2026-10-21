@@ -1,6 +1,134 @@
+# Week 3 lesson. See README.md for every field and section type.
 week: 3
 title: "Meeting Doubt"
 subtitle: "God's witness is already in their world"
-date: 2026-10-21   
-status: planned
-sections: []
+date: 2026-10-21
+status: published    # planned | draft | published
+summary: "God's fingerprints are already in the skeptic's world, and doubt isn't the end of faith."
+big_idea: "God has never left himself without a witness. A skeptic's sense of justice and wonder at the world are already pointing somewhere. And doubt can live inside faith: Jesus came back for Thomas. So we meet doubters with mercy and look for common ground before we argue."
+handout_notes_lines: 0
+
+sections:
+  - type: question
+    kicker: "Opening"
+    heading: "A question that stuck"
+    text: "Think of a time you had a doubt or a question about faith that wouldn't go away. What helped? What didn't?"
+    note_lines: 3
+
+  - type: scripture
+    kicker: "Meeting doubt · 1"
+    heading: "Never without a witness"
+    passages:
+      - ref: "Acts 14:15–17"
+      - ref: "Romans 2:14–15"
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "\"Given what I see\""
+    title: "Where is God in Suffering? Jon Steingard & Amy Orr-Ewing"
+    channel: "Premier Unbelievable?"
+    speaker: "Jon Steingard and Amy Orr-Ewing"
+    youtube: feRpdJJ50ds
+    start: "11:28"
+    end: "16:44"
+    setup: |
+      Jon Steingard was the lead singer of the Christian band Hawk Nelson. In 2020 he
+      announced that he no longer believed in God. Here he tells Amy Orr-Ewing, a Christian
+      writer, what started it. Partway through, the host, Justin Brierley, mentions that he
+      has been to the same place.
+    listen_for:
+      - "What Orr-Ewing does before she disagrees with him"
+      - "The question she asks about his own reaction"
+    ties_to: ["Romans 2:15", "Jude 22"]
+    note_lines: 2
+
+  - type: scripture
+    kicker: "Meeting doubt · 2"
+    heading: "Your own poets"
+    passages:
+      - ref: "Acts 17:16–23"
+      - ref: "Acts 17:24–31"
+      - ref: "Acts 17:32–34"
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "\"What I love about this view\""
+    title: "Does consciousness point to God? Philip Goff & Sharon Dirckx"
+    channel: "Premier Unbelievable?"
+    speaker: "Philip Goff and Sharon Dirckx"
+    youtube: Ef2vvT5GfoE
+    start: "43:20"
+    end: "44:46"
+    setup: |
+      Philip Goff is a philosopher who doesn't believe in God. He thinks consciousness is
+      part of everything, all the way down (a view called panpsychism). Sharon Dirckx is a
+      Christian and a brain scientist. Goff has just finished explaining his view.
+    listen_for:
+      - "How she begins"
+      - "What she finds in his view that she can agree with"
+    ties_to: ["Acts 17:28"]
+    note_lines: 2
+
+  - type: scripture
+    kicker: "Meeting doubt · 3"
+    heading: "Room for Thomas"
+    passages:
+      - ref: "John 20:24–29"
+      - ref: "Mark 9:20–27"
+      - ref: "Matthew 28:16–20"
+      - ref: "Jude 22–23"
+    passage_space: 1
+
+  - type: clip
+    kicker: "Listen"
+    heading: "\"Three more floors\""
+    title: "Reason for God? Belief in an Age of Skepticism | Q&A with Tim Keller at Columbia University"
+    channel: "The Veritas Forum"
+    speaker: "Tim Keller"
+    youtube: L9jHlrMRJAo
+    start: "1:20:30"
+    end: "1:23:40"
+    setup: |
+      Tim Keller (1950–2023) was a pastor in New York City. At a forum at Columbia
+      University in 2008, near the end of the evening, he was asked what gives him peace.
+      He answers with a story about his own faith and doubt.
+    listen_for:
+      - "What happened to Keller's certainty, and to his doubts"
+      - "How he says faith, reason, and doubt fit together"
+    ties_to: ["Mark 9:24", "John 20:27"]
+    note_lines: 2
+
+  - type: questions
+    heading: "Talk it over"
+    items:
+      - "Dirckx disagrees with Goff but starts with what she loves about his view. What could you honestly say you love about how the skeptic you know (or any of those ones you have \"met\" in this class) thinks?"
+      - "Orr-Ewing asked Steingard what in him recognized that the suffering was wrong. What in the skeptic you know already points toward God?"
+      - "Keller found doubts he didn't know he had, and ended up with more peace. Would telling the skeptic you know about your own doubts help or hurt? Why?"
+    note_lines: 2
+
+  - type: text
+    heading: "Building with those who doubt"
+    body: |
+      Doubt and unbelief aren't reasons to push away. Just the opposite. Thomas doubted out
+      loud, among the disciples, and Jesus came back for him. A father said "I do believe"
+      and "help me overcome my unbelief" in the same breath, and Jesus did not send him
+      away. Some of the disciples doubted on the mountain, and Jesus sent them out anyway.
+
+      And the skeptic isn't starting from zero. God "has not left himself without testimony"
+      (Acts 14:17). The sense that suffering is wrong, wonder at the world around them,
+      hunger for justice: these are already there.
+
+      These vestiges of the image of God are foundations on which we build together. Paul
+      honored the Athenians' poets, then told them about the man God raised from the dead.
+      Our divine family is made to discover truth together. Even he who is the Truth became
+      our brother in order to build his new kingdom.
+
+  - type: activity
+    kicker: "This week"
+    heading: "Practice"
+    steps:
+      - "Pray again, by name, for the person you've been thinking of."
+      - "Listen for one thing they already care about: justice, beauty, truth, kindness. Tell them you see it."
+      - "If they share a doubt, thank them before you answer it."
